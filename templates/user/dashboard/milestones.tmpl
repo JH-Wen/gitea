@@ -2,6 +2,7 @@
 <div role="main" aria-label="{{.Title}}" class="page-content dashboard issues repository milestones">
 	{{template "user/dashboard/navbar" .}}
 	<div class="ui container">
+		{{template "base/hastur_page_heading" (dict "section" "WORKSPACE" "title" (ctx.Locale.Tr "milestones") "icon" "octicon-milestone")}}
 		<div class="flex-container">
 			<div class="flex-container-nav">
 				<div class="ui secondary vertical filter menu tw-bg-transparent">
@@ -26,7 +27,7 @@
 										{{- end -}}
 									{{- end -}}
 								]&sort={{$.SortType}}&state={{$.State}}&q={{$.Keyword}}" title="{{.FullName}}">
-								<span class="tw-inline-block tw-truncate tw-w-3/4">{{$Repo.FullName}}</span>
+								<span class="{{if StringUtils.HasPrefix ctx.CurrentWebTheme.InternalName "hastur-"}}hastur-repo-filter-name{{else}}tw-inline-block tw-truncate tw-w-3/4{{end}}">{{$Repo.FullName}}</span>
 								<div class="ui {{if $.IsShowClosed}}red{{else}}green{{end}} label">{{index $.Counts $Repo.ID}}</div>
 							</a>
 						{{end}}

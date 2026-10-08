@@ -2,6 +2,7 @@
 <div role="main" aria-label="{{.Title}}" class="page-content explore repositories">
 	{{template "explore/navbar" .}}
 	<div class="ui container">
+		{{template "base/hastur_page_heading" (dict "section" "WORKSPACE" "title" (ctx.Locale.Tr "explore.repos") "icon" "octicon-repo")}}
 		{{template "shared/repo/search" .}}
 		<div class="divider"></div>
 		{{template "shared/repo/list" .}}

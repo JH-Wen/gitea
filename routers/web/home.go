@@ -7,6 +7,7 @@ package web
 import (
 	"net/http"
 	"strconv"
+	"strings"
 
 	"gitea.dev/models/db"
 	repo_model "gitea.dev/models/repo"
@@ -34,7 +35,7 @@ func Home(ctx *context.Context) {
 	}
 
 	// Check auto-login.
-	if ctx.GetSiteCookie(setting.CookieRememberName) != "" {
+	if ctx.GetSiteCookie(setting.CookieRememberName) != "" || strings.HasPrefix(ctx.TemplateContext.CurrentWebTheme().InternalName, "hastur-") {
 		ctx.Redirect(setting.AppSubURL + "/user/login")
 		return
 	}

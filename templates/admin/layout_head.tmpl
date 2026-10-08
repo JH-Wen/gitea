@@ -3,6 +3,7 @@
 	<div class="ui container fluid padded flex-container">
 		{{template "admin/navbar" ctx.RootData}}
 		<div class="flex-container-main">
+			{{template "base/hastur_page_heading" (dict "section" (ctx.Locale.Tr "admin_panel") "title" ctx.RootData.Title "icon" "octicon-shield-check")}}
 			{{template "base/alert" ctx.RootData}}
 			{{/* block: admin-setting-content */}}
 

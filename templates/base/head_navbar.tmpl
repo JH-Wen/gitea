@@ -1,6 +1,11 @@
+{{$hasturTheme := StringUtils.HasPrefix ctx.CurrentWebTheme.InternalName "hastur-"}}
 <nav id="navbar" aria-label="{{ctx.Locale.Tr "aria.navbar"}}">
 	<a class="item" id="navbar-logo" href="{{AppSubUrl}}/" aria-label="{{if .IsSigned}}{{ctx.Locale.Tr "dashboard"}}{{else}}{{ctx.Locale.Tr "home_title"}}{{end}}">
-		<img width="30" height="30" src="{{AssetUrlPrefix}}/img/logo.svg" alt="{{ctx.Locale.Tr "logo"}}" aria-hidden="true">
+		{{if $hasturTheme}}
+			<span class="hastur-brand" aria-hidden="true"><span class="hastur-brand-mark"><span>g</span></span>gitea</span>
+		{{else}}
+			<img width="30" height="30" src="{{AssetUrlPrefix}}/img/logo.svg" alt="{{ctx.Locale.Tr "logo"}}" aria-hidden="true">
+		{{end}}
 	</a>
 
 	<button type="button" class="item btn only-mobile" id="navbar-expand-toggle" aria-label="{{ctx.Locale.Tr "home.nav_menu"}}">{{svg "octicon-three-bars"}}</button>
@@ -9,22 +14,29 @@
 		{{if and .IsSigned .MustChangePassword}}
 			{{/* No links */}}
 		{{else if .IsSigned}}
+			{{if $hasturTheme}}
+				<a class="item{{if .PageIsNews}} active{{end}}" href="{{AppSubUrl}}/">{{svg "octicon-home"}} {{ctx.Locale.Tr "dashboard"}}</a>
+			{{end}}
 			{{if not ctx.Consts.RepoUnitTypeIssues.UnitGlobalDisabled}}
-				<a class="item{{if .PageIsIssues}} active{{end}}" href="{{AppSubUrl}}/issues">{{ctx.Locale.Tr "issues"}}</a>
+				<a class="item{{if .PageIsIssues}} active{{end}}" href="{{AppSubUrl}}/issues">{{if $hasturTheme}}{{svg "octicon-issue-opened"}}{{end}}{{ctx.Locale.Tr "issues"}}</a>
 			{{end}}
 			{{if not ctx.Consts.RepoUnitTypePullRequests.UnitGlobalDisabled}}
-				<a class="item{{if .PageIsPulls}} active{{end}}" href="{{AppSubUrl}}/pulls">{{ctx.Locale.Tr "pull_requests"}}</a>
+				<a class="item{{if .PageIsPulls}} active{{end}}" href="{{AppSubUrl}}/pulls">{{if $hasturTheme}}{{svg "octicon-git-pull-request"}}{{end}}{{ctx.Locale.Tr "pull_requests"}}</a>
 			{{end}}
 			{{if not (and ctx.Consts.RepoUnitTypeIssues.UnitGlobalDisabled ctx.Consts.RepoUnitTypePullRequests.UnitGlobalDisabled)}}
 				{{if .ShowMilestonesDashboardPage}}
-					<a class="item{{if .PageIsMilestonesDashboard}} active{{end}}" href="{{AppSubUrl}}/milestones">{{ctx.Locale.Tr "milestones"}}</a>
+					<a class="item{{if .PageIsMilestonesDashboard}} active{{end}}" href="{{AppSubUrl}}/milestones">{{if $hasturTheme}}{{svg "octicon-milestone"}}{{end}}{{ctx.Locale.Tr "milestones"}}</a>
 				{{end}}
 			{{end}}
-			<a class="item{{if .PageIsExplore}} active{{end}}" href="{{AppSubUrl}}/explore/repos">{{ctx.Locale.Tr "explore_title"}}</a>
+			<a class="item{{if .PageIsExplore}} active{{end}}" href="{{AppSubUrl}}/explore/repos">{{if $hasturTheme}}{{svg "octicon-telescope"}}{{end}}{{ctx.Locale.Tr "explore_title"}}</a>
 		{{else if .IsLandingPageOrganizations}}
 			<a class="item{{if .PageIsExplore}} active{{end}}" href="{{AppSubUrl}}/explore/organizations">{{ctx.Locale.Tr "explore_title"}}</a>
 		{{else}}
 			<a class="item{{if .PageIsExplore}} active{{end}}" href="{{AppSubUrl}}/explore/repos">{{ctx.Locale.Tr "explore_title"}}</a>
+		{{end}}
+
+		{{if and $hasturTheme .IsSigned (not .MustChangePassword) .Repository}}
+			{{template "base/hastur_repo_nav" .}}
 		{{end}}
 
 		{{template "custom/extra_links" .}}
@@ -34,9 +46,10 @@
 		{{end}}
 	</div>
 
-	{{template "base/head_navbar_icons"}}
+	{{if not $hasturTheme}}{{template "base/head_navbar_icons"}}{{end}}
 
 	<div class="navbar-list navbar-right">
+		{{if $hasturTheme}}{{template "base/head_navbar_icons"}}{{end}}
 		{{if and .IsSigned .MustChangePassword}}
 			<div class="ui dropdown jump item" data-tooltip-content="{{ctx.Locale.Tr "user_profile_and_more"}}">
 				<span class="flex-text-block">

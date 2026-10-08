@@ -2,6 +2,7 @@
 <div role="main" aria-label="{{.Title}}" class="page-content explore users">
 	{{template "explore/navbar" .}}
 	<div class="ui container">
+		{{template "base/hastur_page_heading" (dict "section" "WORKSPACE" "title" (ctx.Locale.Tr (Iif .PageIsExploreOrganizations "explore.organizations" "explore.users")) "icon" "octicon-people")}}
 		{{template "explore/search" .}}
 		{{template "explore/user_list" .}}
 		{{template "base/paginate" .}}

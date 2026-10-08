@@ -100,6 +100,15 @@ export function initGlobalDropdown() {
 }
 
 export function initGlobalComponent() {
+  registerGlobalInitFunc('initHasturSettingsNav', (el) => {
+    const details = el as HTMLDetailsElement;
+    const desktop = window.matchMedia('(min-width: 768px)');
+    const update = () => {
+      details.open = desktop.matches;
+    };
+    update();
+    desktop.addEventListener('change', update);
+  });
   registerGlobalInitFunc('initTabSwitcher', initTabSwitcher);
   registerGlobalInitFunc('initAvatarUploader', initAvatarUploaderWithCropper);
   registerGlobalInitFunc('initSearchRepoBox', initCompSearchRepoBox);

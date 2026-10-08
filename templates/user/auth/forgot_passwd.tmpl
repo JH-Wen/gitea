@@ -1,5 +1,6 @@
 {{template "base/head" .}}
-<div role="main" aria-label="{{.Title}}" class="page-content user forgot password">
+<div role="main" aria-label="{{.Title}}" class="page-content hastur-auth user forgot password">
+	{{if StringUtils.HasPrefix ctx.CurrentWebTheme.InternalName "hastur-"}}{{template "user/auth/hastur_identity" .}}{{end}}
 	<div class="ui middle very relaxed page grid">
 		<div class="column">
 			<form class="ui form ignore-dirty" action="{{.Link}}" method="post">

@@ -5,10 +5,15 @@
     // override "local" from packaged version
     "GOTOOLCHAIN": "auto"
   },
+  "runArgs": ["--publish", "127.0.0.1:4319:3000"],
+  "mounts": [
+    "source=gitea-dev-node-modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
+    "source=gitea-dev-python-env,target=${containerWorkspaceFolder}/.venv,type=volume"
+  ],
   "features": {
     // installs nodejs into container
     "ghcr.io/devcontainers/features/node:1": {
-      "version": "latest"
+      "version": "24"
     },
     "ghcr.io/devcontainers/features/git-lfs:1.2.5": {},
     "ghcr.io/jsburckhardt/devcontainer-features/uv:1": {},
@@ -41,5 +46,5 @@
       "onAutoForward": "notify"
     }
   },
-  "postCreateCommand": "make deps"
+  "postCreateCommand": "git config --global --add safe.directory \"$PWD\" && sudo chown $(id -u):$(id -g) node_modules .venv && pnpm install --frozen-lockfile && uv sync --frozen && make deps"
 }

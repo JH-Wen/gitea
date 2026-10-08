@@ -1,10 +1,17 @@
 {{template "base/head" .}}
 <div role="main" aria-label="{{.Title}}" class="page-content dashboard feeds">
 	{{template "user/dashboard/navbar" .}}
+	{{if StringUtils.HasPrefix ctx.CurrentWebTheme.InternalName "hastur-"}}
+		<div class="ui container">{{template "user/dashboard/hastur_overview" .}}</div>
+	{{end}}
 	<div class="ui container flex-container">
 		<div class="flex-container-main">
 			{{template "base/alert" .}}
-			{{template "user/heatmap" .}}
+			{{if StringUtils.HasPrefix ctx.CurrentWebTheme.InternalName "hastur-"}}
+				<h2 class="hastur-section-heading">{{svg "octicon-pulse"}} {{ctx.Locale.Tr "activities"}}</h2>
+			{{else}}
+				{{template "user/heatmap" .}}
+			{{end}}
 			{{if .Page.Paginator.TotalPages}}
 				{{template "user/dashboard/feeds" .}}
 			{{else}}

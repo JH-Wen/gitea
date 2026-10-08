@@ -2,6 +2,7 @@
 <div role="main" aria-label="{{.Title}}" class="page-content dashboard issues">
 	{{template "user/dashboard/navbar" .}}
 	<div class="ui container">
+		{{template "base/hastur_page_heading" (dict "section" "WORKSPACE" "title" (ctx.Locale.Tr (Iif .PageIsPulls "pull_requests" "issues")) "icon" (Iif .PageIsPulls "octicon-git-pull-request" "octicon-issue-opened"))}}
 		{{template "base/alert" .}}
 		<div class="flex-container">
 			{{$queryLink := QueryBuild "?" "type" $.ViewType "sort" $.SortType "state" $.State "q" $.Keyword "labels" .SelectLabels "search_mode" $.SelectedSearchMode}}

@@ -1,0 +1,70 @@
+<div id="activity-feed" class="hastur-timeline" data-ref-issue-container>
+	{{$previousGroup := ""}}
+	{{range .Feeds}}
+		{{$repoLink := .GetRepoLink ctx}}
+		{{$group := printf "%s/%s" $repoLink (.GetActUserName ctx)}}
+		{{if ne $group $previousGroup}}
+			<div class="hastur-timeline-group">
+				{{ctx.AvatarUtils.AvatarByAction .}}
+				{{if gt .ActUser.ID 0}}<a href="{{AppSubUrl}}/{{(.GetActUserName ctx) | PathEscape}}" title="{{.GetActDisplayNameTitle ctx}}">{{.GetActDisplayName ctx}}</a>{{else}}<span>{{.ShortActUserName ctx}}</span>{{end}}
+				<span aria-hidden="true">/</span>
+				<a href="{{$repoLink}}">{{.ShortRepoPath ctx}}</a>
+			</div>
+			{{$previousGroup = $group}}
+		{{end}}
+		<article class="hastur-timeline-event">
+			<div class="hastur-timeline-node" aria-hidden="true">{{if and (.GetOpType.InActions "commit_repo") (not .Content)}}{{svg "octicon-git-branch" 18}}{{else}}{{svg (printf "octicon-%s" (ActionIcon .GetOpType)) 18}}{{end}}</div>
+			<div class="hastur-timeline-content">
+				{{if and (.GetOpType.InActions "commit_repo" "mirror_sync_push") .Content}}
+					{{$push := ActionContent2Commits .}}
+					{{$repo := .Repo}}
+					<details class="hastur-timeline-details">
+						<summary>
+							<span class="hastur-timeline-title">{{if $push.Commits}}{{ctx.RenderUtils.RenderCommitMessage (index $push.Commits 0).Message $repo}}{{else}}{{ctx.Locale.Tr "repo.commits"}}{{end}}</span>
+							<span class="hastur-timeline-count" aria-label="{{ctx.Locale.Tr "repo.commits"}}: {{$push.Len}}">{{svg "octicon-git-commit" 14}} {{$push.Len}}</span>
+							{{svg "octicon-chevron-down" 14 "hastur-timeline-chevron"}}
+						</summary>
+						<div class="hastur-timeline-commits">
+							{{range $push.Commits}}
+								<div class="hastur-timeline-commit">
+									{{ctx.RenderUtils.AvatarStackPushCommit .}}
+									<a class="ui sha label" href="{{$repoLink}}/commit/{{.Sha1}}">{{ShortSha .Sha1}}</a>
+									<span>{{ctx.RenderUtils.RenderCommitMessage .Message $repo}}</span>
+								</div>
+							{{end}}
+							{{if and (gt $push.Len 1) $push.CompareURL}}<a href="{{AppSubUrl}}/{{$push.CompareURL}}">{{ctx.Locale.Tr "action.compare_commits" $push.Len}} {{svg "octicon-arrow-right" 14}}</a>{{end}}
+						</div>
+					</details>
+					<a class="hastur-timeline-meta" href="{{.GetRefLink ctx}}">{{svg "octicon-git-branch" 14}} {{.GetBranch}}</a>
+				{{else if .GetOpType.InActions "create_issue" "create_pull_request" "merge_pull_request"}}
+					{{$kind := "issues"}}
+					{{if .GetOpType.InActions "create_pull_request" "merge_pull_request"}}{{$kind = "pulls"}}{{end}}
+					<a class="hastur-timeline-title" href="{{$repoLink}}/{{$kind}}/{{index .GetIssueInfos 0}}">{{index .GetIssueInfos 1 | ctx.RenderUtils.RenderIssueSimpleTitle}}</a>
+					<div class="hastur-timeline-meta">
+						<span>#{{index .GetIssueInfos 0}}</span>
+						{{if .GetOpType.InActions "create_issue"}}{{ctx.Locale.Tr "repo.issues.new"}}{{else if .GetOpType.InActions "create_pull_request"}}{{ctx.Locale.Tr "repo.pulls.new"}}{{else}}{{ctx.Locale.Tr "repo.pulls.merged"}}{{end}}
+					</div>
+				{{else if .GetOpType.InActions "commit_repo"}}
+					<a class="hastur-timeline-title" href="{{.GetRefLink ctx}}">{{.GetBranch}}</a>
+					<div class="hastur-timeline-meta">{{ctx.Locale.Tr "repo.branch.new_branch"}}</div>
+				{{else if .GetOpType.InActions "create_repo"}}
+					<a class="hastur-timeline-title" href="{{$repoLink}}">{{ctx.Locale.Tr "new_repo"}}</a>
+				{{else}}
+					<div class="hastur-timeline-title">{{template "user/dashboard/feed_action" .}}</div>
+					{{if .GetOpType.InActions "comment_issue" "approve_pull_request" "reject_pull_request" "comment_pull"}}
+						<a class="hastur-timeline-meta" href="{{.GetCommentLink ctx}}">{{.GetIssueTitle ctx | ctx.RenderUtils.RenderIssueSimpleTitle}}</a>
+						{{with index .GetIssueInfos 1}}
+							{{with ctx.RenderUtils.FeedExcerptToHtml .}}<details class="hastur-timeline-details"><summary>{{ctx.Locale.Tr "more_items"}}</summary><div class="render-content markup">{{.}}</div></details>{{end}}
+						{{end}}
+					{{else if .GetOpType.InActions "close_issue" "reopen_issue" "close_pull_request" "reopen_pull_request"}}
+						<div class="hastur-timeline-meta">{{.GetIssueTitle ctx | ctx.RenderUtils.RenderIssueSimpleTitle}}</div>
+					{{else if .GetOpType.InActions "pull_review_dismissed"}}
+						<div class="hastur-timeline-meta">{{index .GetIssueInfos 2 | ctx.RenderUtils.RenderEmoji}}</div>
+					{{end}}
+				{{end}}
+			</div>
+			<div class="hastur-timeline-time">{{DateUtils.TimeSince .GetCreate}}</div>
+		</article>
+	{{end}}
+	{{template "base/paginate" .}}
+</div>

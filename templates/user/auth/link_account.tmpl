@@ -1,5 +1,6 @@
 {{template "base/head" .}}
-<div role="main" aria-label="{{.Title}}" class="page-content user link-account">
+<div role="main" aria-label="{{.Title}}" class="page-content hastur-auth user link-account">
+	{{if StringUtils.HasPrefix ctx.CurrentWebTheme.InternalName "hastur-"}}{{template "user/auth/hastur_identity" .}}{{end}}
 	<overflow-menu class="ui secondary pointing tabular top attached borderless menu secondary-nav">
 		<div class="overflow-menu-items tw-justify-center" data-global-init="initTabSwitcher">
 			<!-- TODO handle .ShowRegistrationButton once other login bugs are fixed -->

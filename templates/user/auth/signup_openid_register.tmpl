@@ -1,5 +1,6 @@
 {{template "base/head" .}}
-<div role="main" aria-label="{{.Title}}" class="page-content user signup">
+<div role="main" aria-label="{{.Title}}" class="page-content hastur-auth user signup">
+	{{if StringUtils.HasPrefix ctx.CurrentWebTheme.InternalName "hastur-"}}{{template "user/auth/hastur_identity" .}}{{end}}
 	{{template "user/auth/signup_openid_navbar" .}}
 	<div class="ui container">
 				{{template "base/alert" .}}

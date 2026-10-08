@@ -1,0 +1,337 @@
+:root {
+  --fonts-proportional: "Bahnschrift", "Noto Sans CJK SC", "Noto Sans SC", "Segoe UI Variable", "Microsoft YaHei UI", system-ui;
+  --fonts-monospace: "Cascadia Code", "SFMono-Regular", Consolas, monospace, var(--fonts-emoji);
+  --border-radius: 6px;
+  --border-radius-medium: 10px;
+  --hastur-sidebar-width: 224px;
+  --color-primary-dark-1: color-mix(in srgb, var(--color-primary), var(--color-text-dark) 12%);
+  --color-primary-dark-2: color-mix(in srgb, var(--color-primary), var(--color-text-dark) 24%);
+  --color-primary-dark-3: color-mix(in srgb, var(--color-primary), var(--color-text-dark) 36%);
+  --color-primary-dark-4: color-mix(in srgb, var(--color-primary), var(--color-text-dark) 48%);
+  --color-primary-dark-5: color-mix(in srgb, var(--color-primary), var(--color-text-dark) 60%);
+  --color-primary-dark-6: color-mix(in srgb, var(--color-primary), var(--color-text-dark) 72%);
+  --color-primary-dark-7: color-mix(in srgb, var(--color-primary), var(--color-text-dark) 84%);
+  --color-primary-light-1: color-mix(in srgb, var(--color-primary), var(--color-body) 12%);
+  --color-primary-light-2: color-mix(in srgb, var(--color-primary), var(--color-body) 24%);
+  --color-primary-light-3: color-mix(in srgb, var(--color-primary), var(--color-body) 36%);
+  --color-primary-light-4: color-mix(in srgb, var(--color-primary), var(--color-body) 48%);
+  --color-primary-light-5: color-mix(in srgb, var(--color-primary), var(--color-body) 60%);
+  --color-primary-light-6: color-mix(in srgb, var(--color-primary), var(--color-body) 72%);
+  --color-primary-light-7: color-mix(in srgb, var(--color-primary), var(--color-body) 84%);
+  --color-primary-alpha-10: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  --color-primary-alpha-20: color-mix(in srgb, var(--color-primary) 20%, transparent);
+  --color-primary-alpha-30: color-mix(in srgb, var(--color-primary) 30%, transparent);
+  --color-primary-alpha-40: color-mix(in srgb, var(--color-primary) 40%, transparent);
+  --color-primary-alpha-50: color-mix(in srgb, var(--color-primary) 50%, transparent);
+  --color-primary-alpha-60: color-mix(in srgb, var(--color-primary) 60%, transparent);
+  --color-primary-alpha-70: color-mix(in srgb, var(--color-primary) 70%, transparent);
+  --color-primary-alpha-80: color-mix(in srgb, var(--color-primary) 80%, transparent);
+  --color-primary-alpha-90: color-mix(in srgb, var(--color-primary) 90%, transparent);
+  --color-accent: var(--color-primary);
+  --color-nav-text: var(--color-text-light);
+  --color-footer: var(--color-body);
+}
+
+.hastur-shell {
+  line-height: 1.65;
+}
+
+.hastur-shell * {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-secondary-dark-3) transparent;
+}
+
+html:has(> .hastur-shell) {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-secondary-dark-3) transparent;
+}
+
+@supports selector(::-webkit-scrollbar) {
+  html:has(> .hastur-shell),
+  .hastur-shell * {
+    scrollbar-width: auto;
+    scrollbar-color: initial;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-secondary-dark-3);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    border-radius: 8px;
+    min-height: 32px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-primary-light-4);
+  }
+
+  ::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+}
+
+.hastur-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-text-dark);
+  font-size: 28px;
+  letter-spacing: -1px;
+  font-weight: var(--font-weight-semibold);
+}
+
+.hastur-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 37px;
+  height: 40px;
+  border: 1px solid var(--color-primary);
+  border-radius: 12px 12px 12px 3px;
+  color: var(--color-primary);
+  font: italic 33px/1 Georgia, serif;
+}
+
+.hastur-brand-mark > span {
+  transform: translateY(-5px);
+}
+
+.hastur-repo-nav {
+  display: grid;
+  gap: 4px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-secondary);
+}
+
+.hastur-repo-nav > a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 8px 12px;
+  border-radius: var(--border-radius);
+  color: var(--color-nav-text);
+}
+
+.hastur-repo-nav > a:hover {
+  background: var(--color-nav-hover-bg);
+  color: var(--color-text-dark);
+}
+
+.hastur-repo-nav > a.active,
+.hastur-shell #navbar > .navbar-list > .item.active {
+  background: var(--color-active);
+  color: var(--color-primary);
+}
+
+.hastur-repo-nav > .hastur-repo-identity {
+  margin-bottom: 8px;
+  border: 1px solid var(--color-secondary);
+  color: var(--color-text-dark);
+}
+
+.hastur-repo-identity > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hastur-repo-count {
+  margin-inline-start: auto;
+  font-family: var(--fonts-monospace);
+  font-size: 11px;
+  color: var(--color-text-light-2);
+}
+
+.hastur-shell #navbar > .navbar-list > .item {
+  gap: 10px;
+}
+
+.hastur-shell .repo-header {
+  padding-block: 28px 20px;
+}
+
+.hastur-shell .repo-header > .flex-text-block > .svg {
+  width: 48px;
+  height: 48px;
+  padding: 11px;
+  margin-inline-end: 8px;
+  background: var(--color-active);
+  border: 1px solid var(--color-secondary);
+  border-radius: var(--border-radius-medium);
+  color: var(--color-primary);
+}
+
+.hastur-shell .secondary.pointing.menu .item {
+  padding-block: 16px;
+}
+
+.hastur-shell #issue-list > .item {
+  padding-block: 18px;
+}
+
+.hastur-shell #issue-list .list-item-large-title {
+  font-weight: var(--font-weight-medium);
+  line-height: 1.65;
+}
+
+.hastur-shell .markup {
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.hastur-shell .markup h1,
+.hastur-shell .markup h2,
+.hastur-shell .markup h3 {
+  line-height: 1.45;
+  letter-spacing: -.02em;
+}
+
+.hastur-shell .markup p,
+.hastur-shell .markup ul,
+.hastur-shell .markup ol {
+  margin-bottom: 1.25em;
+}
+
+.hastur-shell .markup pre,
+.hastur-shell .code-view {
+  line-height: var(--line-height-code);
+}
+
+.hastur-shell :is(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+@media (min-width: 960px) {
+  .hastur-signed > .full.height {
+    padding-inline-start: var(--hastur-sidebar-width);
+  }
+
+  .hastur-signed > footer {
+    margin-inline-start: var(--hastur-sidebar-width);
+  }
+
+  .hastur-signed #navbar {
+    position: fixed;
+    inset-block: 0;
+    inset-inline-start: 0;
+    width: var(--hastur-sidebar-width);
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 26px 16px 18px;
+    border-bottom: 0;
+    border-inline-end: 1px solid var(--color-secondary);
+    overflow: visible;
+    z-index: 100;
+  }
+
+  .hastur-signed #navbar-logo {
+    width: 100%;
+    margin: 0 0 24px;
+    padding: 0 10px;
+  }
+
+  .hastur-signed #navbar > .navbar-left {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0 0 20px;
+    gap: 4px;
+    min-height: 0;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  .hastur-signed #navbar > .navbar-left > .item {
+    min-height: 42px;
+  }
+
+  .hastur-signed #navbar > .navbar-right {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-secondary);
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .hastur-signed #navbar > .navbar-right > .ui.dropdown {
+    position: static;
+  }
+
+  .hastur-signed #navbar > .navbar-right > .item {
+    justify-content: center;
+    padding-inline: 8px;
+  }
+
+  .hastur-signed #navbar > .navbar-right > .ui.dropdown > .menu {
+    top: auto;
+    bottom: 0;
+    inset-inline: calc(100% + 24px) auto;
+    width: 232px;
+    min-width: 232px;
+    margin: 0;
+    max-height: calc(100dvh - 36px);
+    overflow-y: auto;
+    transform-origin: bottom left;
+  }
+}
+
+@media (max-width: 959.98px) and (min-width: 768px) {
+  .hastur-repo-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hastur-signed #navbar > .navbar-right {
+    display: contents;
+  }
+
+  .hastur-signed #navbar > .navbar-right > .ui.dropdown {
+    display: none;
+    order: 2;
+    width: 100%;
+  }
+
+  .hastur-signed #navbar.navbar-menu-open > .navbar-right > .ui.dropdown {
+    display: flex;
+  }
+
+  .hastur-shell #navbar-logo {
+    padding-block: 8px;
+  }
+
+  .hastur-repo-nav {
+    margin-block: 8px;
+    padding-top: 12px;
+  }
+
+  .hastur-shell .repo-header {
+    padding-block: 18px;
+  }
+}
+
+@media (forced-colors: active) {
+  .hastur-shell *,
+  html:has(> .hastur-shell) {
+    scrollbar-color: initial;
+  }
+}

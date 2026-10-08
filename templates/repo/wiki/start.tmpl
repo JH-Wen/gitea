@@ -2,6 +2,7 @@
 <div role="main" aria-label="{{.Title}}" class="page-content repository wiki start">
 	{{template "repo/header" .}}
 	<div class="ui container">
+		{{template "base/hastur_page_heading" (dict "section" "WORKSPACE" "title" (ctx.Locale.Tr "repo.wiki") "icon" "octicon-book")}}
 		<div class="ui center segment tw-py-8">
 			{{svg "octicon-book" 48}}
 			<h2>{{ctx.Locale.Tr "repo.wiki.welcome"}}</h2>

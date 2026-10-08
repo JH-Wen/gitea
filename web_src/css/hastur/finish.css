@@ -1,0 +1,356 @@
+.hastur-shell {
+  --hastur-ease: cubic-bezier(.2, .8, .2, 1);
+  --hastur-fast: 140ms;
+  --hastur-reveal: 220ms;
+  --hastur-edge: color-mix(in srgb, var(--color-text) 9%, transparent);
+  --hastur-grid: color-mix(in srgb, var(--color-primary) 9%, transparent);
+  --hastur-elevation: 0 1px 0 var(--hastur-edge) inset, 0 8px 24px -16px var(--color-shadow);
+  -webkit-font-smoothing: antialiased;
+}
+
+.hastur-shell :is(.ui.label, .repository-summary b, relative-time, .hastur-repo-count) {
+  font-variant-numeric: tabular-nums;
+}
+
+.hastur-shell :is(.hastur-page-heading, .hastur-auth-identity) {
+  position: relative;
+  isolation: isolate;
+}
+
+.hastur-page-heading::after,
+.hastur-auth-identity::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--color-primary);
+  mask: url("./routing.svg") center / contain no-repeat;
+  opacity: .18;
+}
+
+.hastur-page-heading::after {
+  width: min(32%, 320px);
+  height: 120px;
+  inset-inline-end: 70px;
+  top: 0;
+}
+
+.hastur-auth-identity::before {
+  width: 100%;
+  height: 200px;
+  inset: -48px 0 auto;
+}
+
+.hastur-shell .repo-header {
+  background-image: radial-gradient(var(--hastur-grid) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.hastur-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hastur-eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 5px;
+  border-inline: 1px solid var(--color-primary);
+  border-bottom: 1px solid var(--color-primary);
+  opacity: .65;
+}
+
+.hastur-heading-icon {
+  box-sizing: content-box;
+  padding: 14px;
+  border: 1px solid var(--color-secondary);
+  border-radius: 12px 12px 12px 3px;
+  background: var(--color-box-body);
+  box-shadow: var(--hastur-elevation);
+}
+
+.hastur-shell #navbar {
+  box-shadow: -1px 0 0 var(--hastur-edge) inset;
+}
+
+.hastur-shell #navbar .navbar-left > .item,
+.hastur-repo-nav .overflow-menu-items > .item {
+  position: relative;
+}
+
+.hastur-shell #navbar .navbar-left > .item::after,
+.hastur-repo-nav .overflow-menu-items > .item::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 50%;
+  width: 2px;
+  height: 16px;
+  border-radius: 1px;
+  background: var(--color-primary);
+  opacity: 0;
+  transform: translateY(-50%) scaleY(.3);
+}
+
+.hastur-shell #navbar .navbar-left > .item.active::after,
+.hastur-repo-nav .overflow-menu-items > .item.active::after {
+  opacity: 1;
+  transform: translateY(-50%) scaleY(1);
+}
+
+.hastur-focus-links > a {
+  position: relative;
+  background-image: radial-gradient(var(--hastur-grid) 1px, transparent 1px);
+  background-size: 12px 12px;
+  background-position: right 14px top 14px;
+  box-shadow: var(--hastur-elevation);
+}
+
+.hastur-focus-icon {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border: 1px solid var(--color-secondary-dark-1);
+  border-radius: 10px 10px 10px 3px;
+  background: var(--color-box-body);
+  box-shadow: 0 1px 0 var(--hastur-edge) inset;
+}
+
+.hastur-shell :is(.repository-directory.items-with-main > .item, .repo-home-sidebar-top, .hastur-auth > .ui.grid, .hastur-auth > .ui.container, .diff-file-box, .project-column, .comment-container) {
+  box-shadow: var(--hastur-elevation);
+}
+
+.hastur-shell .repository-summary .segment.sub-menu {
+  min-height: 40px;
+  background: var(--color-box-body);
+}
+
+.hastur-shell .repository-summary .sub-menu .item {
+  height: 40px;
+  gap: 8px;
+}
+
+.hastur-shell .repository-summary .sub-menu .item + .item {
+  border-inline-start: 1px solid var(--color-secondary);
+}
+
+.hastur-shell .repository-summary .sub-menu .item > .svg {
+  color: var(--color-text-light-2);
+}
+
+.hastur-shell .repository-summary .sub-menu b {
+  color: var(--color-text-dark);
+}
+
+.hastur-shell .ui.dropdown > .menu,
+.hastur-shell .ui.modal {
+  border-color: var(--color-secondary-dark-2);
+  box-shadow: 0 1px 0 var(--hastur-edge) inset, 0 12px 32px var(--color-shadow);
+  border-radius: 10px;
+}
+
+.hastur-shell .ui.dropdown > .menu > .item {
+  border-radius: 5px;
+}
+
+.hastur-shell .ui.modal.transition,
+.hastur-shell .ui.dimmer:has(> .ui.modal) {
+  animation: none;
+}
+
+.hastur-shell .ui.dimmer:not(.active):has(> .ui.modal) {
+  pointer-events: none;
+}
+
+.hastur-shell .ui.primary.button {
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--color-primary) 70%, white) inset, 0 2px 6px var(--color-shadow);
+}
+
+.hastur-shell :is(.ui.form .field, .ui.input):focus-within > label {
+  color: var(--color-primary);
+}
+
+.hastur-shell .ui.form input:not([type="checkbox"], [type="radio"]):focus,
+.hastur-shell .ui.form textarea:focus {
+  box-shadow: 0 0 0 3px var(--color-primary-alpha-10);
+}
+
+.hastur-shell kbd {
+  border-radius: 4px;
+  box-shadow: 0 1px 0 var(--color-secondary-dark-1);
+}
+
+.hastur-shell .hastur-timeline-node {
+  border-radius: 10px;
+  box-shadow: 0 1px 0 var(--hastur-edge) inset;
+}
+
+.hastur-shell .hastur-timeline-event:focus-within .hastur-timeline-node {
+  border-color: var(--color-primary-light-3);
+  background: var(--color-active);
+}
+
+@media (hover: hover) {
+  .hastur-focus-links > a:hover,
+  .hastur-shell .repository-directory.items-with-main > .item:hover,
+  .hastur-shell #dashboard-repo-list .repo-owner-name-list > li:hover {
+    border-color: var(--color-primary-light-4);
+    box-shadow: 0 1px 0 var(--color-primary-alpha-30) inset, 0 8px 24px -12px var(--color-shadow);
+  }
+
+  .hastur-shell :is(.repository-summary .item, #repo-files-table tr, #issue-list > .item, #notification_table tr):hover {
+    background-color: var(--color-hover);
+  }
+
+  .hastur-timeline-event:hover .hastur-timeline-node {
+    border-color: var(--color-primary-light-3);
+    background: var(--color-active);
+  }
+
+  .hastur-timeline-details > summary:hover .hastur-timeline-title {
+    color: var(--color-primary);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hastur-shell :is(.ui.button, button.btn, .ui.dropdown > .menu > .item, .secondary.pointing.menu .item, .filter.menu .item, .repository-summary .item, #repo-files-table tr, #issue-list > .item, #notification_table tr, .hastur-timeline-node, .hastur-timeline-title, .ui.form label),
+  .hastur-shell #navbar .item,
+  .hastur-repo-nav .item {
+    transition: background-color var(--hastur-fast) ease, color var(--hastur-fast) ease, border-color var(--hastur-fast) ease, box-shadow var(--hastur-fast) ease, scale var(--hastur-fast) var(--hastur-ease);
+  }
+
+  .hastur-shell :is(.ui.button, button.btn):not(.dropdown, .disabled, :disabled):active {
+    scale: .96;
+  }
+
+  .hastur-shell :is(.ui.input > input, .ui.form input, .ui.form textarea) {
+    transition: border-color var(--hastur-fast) ease, box-shadow var(--hastur-fast) ease, background-color var(--hastur-fast) ease;
+  }
+
+  .hastur-focus-links > a,
+  .hastur-shell .repository-directory.items-with-main > .item,
+  .hastur-shell #dashboard-repo-list .repo-owner-name-list > li {
+    transition: border-color var(--hastur-reveal) ease, box-shadow var(--hastur-reveal) ease, background-color var(--hastur-reveal) ease, translate var(--hastur-reveal) var(--hastur-ease);
+  }
+
+  .hastur-shell #navbar .navbar-left > .item::after,
+  .hastur-repo-nav .overflow-menu-items > .item::after,
+  .hastur-timeline-chevron,
+  .hastur-settings-navigation > summary > .svg:last-child,
+  .hastur-focus-links > a > .svg:last-child {
+    transition: transform var(--hastur-reveal) var(--hastur-ease), opacity var(--hastur-reveal) ease, translate var(--hastur-reveal) var(--hastur-ease);
+  }
+
+  .hastur-timeline-details[open] .hastur-timeline-commits {
+    animation: hastur-surface-in var(--hastur-reveal) var(--hastur-ease);
+  }
+
+  .hastur-shell .ui.dropdown > .menu,
+  .hastur-shell .ui.modal {
+    opacity: 0;
+    translate: 0 5px;
+    transition: opacity var(--hastur-fast) ease, translate var(--hastur-reveal) var(--hastur-ease), visibility var(--hastur-reveal), display var(--hastur-reveal) allow-discrete;
+  }
+
+  .hastur-shell .ui.dropdown > .menu.hidden,
+  .hastur-shell .ui.modal.hidden {
+    pointer-events: none;
+  }
+
+  .hastur-shell .ui.dimmer:has(> .ui.modal) {
+    opacity: 0;
+    transition: opacity var(--hastur-fast) ease, display var(--hastur-reveal) allow-discrete;
+  }
+
+  .hastur-shell .ui.dimmer.active:has(> .ui.modal) {
+    opacity: 1;
+  }
+
+  .hastur-shell .ui.dropdown > .menu.visible,
+  .hastur-shell .ui.dropdown.active > .menu,
+  .hastur-shell .ui.modal.visible {
+    opacity: 1;
+    translate: 0;
+  }
+
+  @starting-style {
+    .hastur-shell .ui.dimmer.active:has(> .ui.modal) {
+      opacity: 0;
+    }
+
+    .hastur-shell .ui.dropdown > .menu.visible,
+    .hastur-shell .ui.dropdown.active > .menu,
+    .hastur-shell .ui.modal.visible {
+      opacity: 0;
+      translate: 0 5px;
+    }
+  }
+
+  @view-transition {
+    navigation: auto;
+  }
+
+  .hastur-shell .page-content {
+    view-transition-name: hastur-content;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+
+  ::view-transition-old(hastur-content) {
+    animation: hastur-content-out 100ms ease both;
+  }
+
+  ::view-transition-new(hastur-content) {
+    animation: hastur-surface-in 220ms cubic-bezier(.2, .8, .2, 1) both;
+  }
+
+  @media (hover: hover) {
+    .hastur-focus-links > a:hover,
+    .hastur-shell .repository-directory.items-with-main > .item:hover {
+      translate: 0 -2px;
+    }
+
+    .hastur-focus-links > a:hover > .svg:last-child {
+      translate: 2px -2px;
+    }
+  }
+}
+
+@keyframes hastur-surface-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hastur-content-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hastur-page-heading::after {
+    display: none;
+  }
+
+  .hastur-focus-icon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (forced-colors: active) {
+  .hastur-page-heading::after,
+  .hastur-auth-identity::before {
+    display: none;
+  }
+}
