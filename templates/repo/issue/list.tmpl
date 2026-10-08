@@ -2,6 +2,7 @@
 <div role="main" aria-label="{{.Title}}" class="page-content repository issue-list">
 	{{template "repo/header" .}}
 	<div class="ui container">
+		{{template "base/hastur_page_heading" (dict "section" .Repository.Name "title" (ctx.Locale.Tr (Iif .PageIsIssueList "repo.issues" "repo.pulls")) "icon" (Iif .PageIsIssueList "octicon-issue-opened" "octicon-git-pull-request"))}}
 	{{template "base/alert" .}}
 
 	{{template "repo/code/recently_pushed_new_branches" dict "RecentBranchesPromptData" .RecentBranchesPromptData}}

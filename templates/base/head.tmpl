@@ -20,7 +20,7 @@
 	{{template "base/head_script" .}}
 	{{template "custom/header" .}}
 </head>
-<body>
+<body{{if StringUtils.HasPrefix ctx.CurrentWebTheme.InternalName "hastur-"}} class="hastur-shell{{if and .IsSigned (not .PageIsInstall)}} hastur-signed{{end}}"{{end}}>
 	{{template "custom/body_outer_pre" .}}
 
 	<div class="full height">

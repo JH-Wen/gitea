@@ -6,6 +6,7 @@
 <div class="page-content repository actions">
 	{{template "repo/header" .}}
 	<div class="ui container">
+		{{template "base/hastur_page_heading" (dict "section" "WORKSPACE" "title" (ctx.Locale.Tr "actions.actions") "icon" "octicon-play")}}
 		{{template "base/alert" .}}
 
 		{{if .HasWorkflowsOrRuns}}

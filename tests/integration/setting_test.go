@@ -90,10 +90,18 @@ func TestSettingShowUserEmailProfile(t *testing.T) {
 func TestSettingLandingPage(t *testing.T) {
 	defer tests.PrepareTestEnv(t)()
 	defer test.MockVariableValue(&setting.LandingPageURL)()
+	defer test.MockVariableValue(&setting.UI.DefaultTheme)()
 
 	setting.LandingPageURL = setting.LandingPageHome
 	req := NewRequest(t, "GET", "/")
 	MakeRequest(t, req, http.StatusOK)
+
+	for _, theme := range []string{"hastur-dark", "hastur-light", "hastur-auto"} {
+		setting.UI.DefaultTheme = theme
+		req = NewRequest(t, "GET", "/")
+		resp := MakeRequest(t, req, http.StatusSeeOther)
+		assert.Equal(t, "/user/login", resp.Header().Get("Location"), theme)
+	}
 
 	setting.LandingPageURL = setting.LandingPageExplore
 	req = NewRequest(t, "GET", "/")

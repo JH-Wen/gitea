@@ -2,6 +2,7 @@
 <div role="main" aria-label="{{.Title}}" class="page-content repository commits">
 	{{template "repo/header" .}}
 	<div class="ui container">
+		{{template "base/hastur_page_heading" (dict "section" "WORKSPACE" "title" (ctx.Locale.Tr "repo.commits") "icon" "octicon-git-commit")}}
 		{{template "repo/sub_menu" .}}
 		<div class="repo-button-row">
 			<div class="repo-button-row-left">

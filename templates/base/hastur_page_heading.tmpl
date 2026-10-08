@@ -1,0 +1,6 @@
+{{if StringUtils.HasPrefix ctx.CurrentWebTheme.InternalName "hastur-"}}
+<header class="hastur-page-heading">
+	<div><span class="hastur-eyebrow">{{.section}}</span><h1>{{.title}}</h1></div>
+	{{svg .icon 28 "hastur-heading-icon"}}
+</header>
+{{end}}

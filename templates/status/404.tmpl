@@ -5,6 +5,7 @@
 		{{template "base/alert" .}}
 		<div class="status-page-error">
 			<div class="status-page-error-title">404 Not Found</div>
+			{{if StringUtils.HasPrefix ctx.CurrentWebTheme.InternalName "hastur-"}}<a class="ui primary button" href="{{AppSubUrl}}/">{{svg "octicon-arrow-left"}} {{ctx.Locale.Tr "dashboard"}}</a>{{end}}
 			<div class="tw-text-center">
 				<div class="tw-my-4">{{if .NotFoundPrompt}}{{.NotFoundPrompt}}{{else}}{{ctx.Locale.Tr "error404"}}{{end}}</div>
 				{{if .NotFoundGoBackURL}}

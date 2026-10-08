@@ -1,4 +1,7 @@
-<div class="flex-container-nav">
+{{if StringUtils.HasPrefix ctx.CurrentWebTheme.InternalName "hastur-"}}
+<details class="flex-container-nav hastur-settings-navigation" open data-global-init="initHasturSettingsNav">
+	<summary>{{svg "octicon-tools"}} {{.Title}} {{svg "octicon-chevron-down"}}</summary>
+{{else}}<div class="flex-container-nav">{{end}}
 	<div class="ui fluid vertical menu">
 		<div class="header item">{{ctx.Locale.Tr "repo.settings"}}</div>
 		<a class="{{if .PageIsSettingsOptions}}active {{end}}item" href="{{.RepoLink}}/settings">
@@ -61,4 +64,4 @@
 			{{ctx.Locale.Tr "audit.title"}}
 		</a>
 	</div>
-</div>
+{{if StringUtils.HasPrefix ctx.CurrentWebTheme.InternalName "hastur-"}}</details>{{else}}</div>{{end}}

@@ -2,8 +2,16 @@
 <div role="main" aria-label="{{.Title}}" class="page-content repository releases">
 	{{template "repo/header" .}}
 	<div class="ui container">
+		{{template "base/hastur_page_heading" (dict "section" "WORKSPACE" "title" (ctx.Locale.Tr "repo.releases") "icon" "octicon-tag")}}
 		{{template "base/alert" .}}
 		{{template "repo/release_tag_header" .}}
+		{{if and (StringUtils.HasPrefix ctx.CurrentWebTheme.InternalName "hastur-") (not .Releases)}}
+			<div class="empty-placeholder">
+				{{svg "octicon-tag" 48}}
+				<h2>{{ctx.Locale.Tr "no_results_found"}}</h2>
+				<p>{{ctx.Locale.Tr "repo.release.new_subheader"}}</p>
+			</div>
+		{{end}}
 		<ul id="release-list">
 			{{range $idx, $info := .Releases}}
 				{{$release := $info.Release}}

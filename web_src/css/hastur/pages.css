@@ -1,0 +1,981 @@
+.hastur-shell {
+  --hastur-space: clamp(20px, 3vw, 48px);
+}
+
+.hastur-shell > .page-footer {
+  padding-inline: var(--hastur-space);
+}
+
+.hastur-shell .page-content > .ui.container,
+.hastur-shell .secondary-nav > .ui.container {
+  width: auto;
+  max-width: 1480px;
+  margin-inline: auto;
+  padding-inline: var(--hastur-space);
+}
+
+.hastur-eyebrow {
+  font: 11px/1.5 var(--fonts-monospace);
+  letter-spacing: .16em;
+  color: var(--color-text-light-2);
+}
+
+.hastur-shell .dashboard-context-nav {
+  padding-inline: var(--hastur-space);
+}
+
+.hastur-shell .dashboard-context-nav > .ui.menu > .dashboard-context-switch {
+  order: 1;
+  justify-content: flex-end;
+  margin-inline: auto 0;
+  padding-inline-end: 0;
+  min-width: 0;
+}
+
+.hastur-shell .dashboard-context-switch .context-user-switch {
+  inset-inline: auto 0;
+  width: min(280px, calc(100vw - 2 * var(--hastur-space)));
+  min-width: 0;
+  transform-origin: top right;
+}
+
+@media (max-width: 767.98px) {
+  .hastur-shell .dashboard-context-nav > .ui.menu > .dashboard-context-switch {
+    order: -1;
+  }
+}
+
+.hastur-page-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 28px;
+}
+
+.hastur-page-heading h1 {
+  margin: 6px 0 0;
+  font-size: clamp(24px, 2.5vw, 34px);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -.035em;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.hastur-heading-icon {
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+
+.hastur-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 24px;
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+}
+
+.hastur-shell .ui.input > input,
+.hastur-shell .ui.form input:not([type="checkbox"], [type="radio"]),
+.hastur-shell .ui.form textarea,
+.hastur-shell .ui.selection.dropdown {
+  border-radius: 7px;
+  min-height: 40px;
+}
+
+.hastur-shell .ui.form .field > label {
+  margin-bottom: 8px;
+  font-weight: var(--font-weight-medium);
+}
+
+.hastur-shell .repo-button-row {
+  margin-block: 12px;
+}
+
+.hastur-shell .repo-button-row .repo-file-search-container .ui.input {
+  display: flex;
+}
+
+.hastur-shell .repo-button-row .repo-file-search-container input {
+  min-height: 0;
+}
+
+.hastur-shell .ui.form .field {
+  margin-bottom: 22px;
+}
+
+.hastur-shell .ui.modal {
+  border: 1px solid var(--color-secondary);
+  border-radius: 14px;
+  box-shadow: 0 24px 80px #0005;
+}
+
+.hastur-shell .ui.modal > .header,
+.hastur-shell .ui.modal > .content,
+.hastur-shell .ui.modal > .actions {
+  padding: 24px;
+}
+
+.hastur-shell .hastur-auth {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(32px, 6vw, 100px);
+  max-width: 1180px;
+  width: 100%;
+  margin: auto;
+  padding: 64px var(--hastur-space);
+  min-height: calc(100dvh - 145px);
+}
+
+.hastur-auth-identity h1 {
+  max-width: 9em;
+  margin: 20px 0 64px;
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.15;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+
+.hastur-shell .hastur-auth > .secondary-nav {
+  grid-column: 1 / -1;
+  grid-row: 1;
+}
+
+.hastur-workflow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.hastur-workflow-line {
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--color-primary-light-5);
+}
+
+.hastur-workflow-node {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 64px;
+  background: var(--color-body);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary-light-4);
+  border-radius: 16px 16px 16px 4px;
+}
+
+.hastur-workflow-node:nth-child(3) {
+  transform: translateY(-16px);
+}
+
+.hastur-workflow-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--color-text-light);
+}
+
+.hastur-shell .hastur-auth > .ui.grid,
+.hastur-shell .hastur-auth > .ui.container {
+  width: 100%;
+  margin: 0;
+  padding: 32px;
+  background: var(--color-box-body);
+  border: 1px solid var(--color-secondary);
+  border-radius: 16px;
+}
+
+.hastur-shell .hastur-auth > .ui.grid > .column {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+}
+
+.hastur-shell .hastur-auth .ui.attached.header {
+  text-align: start;
+  border: 0;
+  background: transparent;
+  padding: 0 0 28px;
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: var(--font-weight-medium);
+}
+
+.hastur-shell .hastur-auth .ui.attached.segment {
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+
+.hastur-shell .hastur-auth .ui.attached.segment.header {
+  font-size: 14px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-secondary);
+}
+
+.hastur-shell .hastur-auth .ui.container.fluid {
+  margin: 0;
+  width: 100%;
+}
+
+.hastur-focus-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.hastur-focus-links > a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 100px;
+  padding: 20px;
+  border: 1px solid var(--color-secondary);
+  border-radius: 10px;
+  color: var(--color-text);
+  background: var(--color-box-body);
+}
+
+.hastur-focus-links > a > .svg:last-child {
+  margin-inline-start: auto;
+  color: var(--color-text-light-2);
+  flex-shrink: 0;
+}
+
+.hastur-focus-icon {
+  display: grid;
+  place-items: center;
+  color: var(--color-primary);
+}
+
+.hastur-shell .dashboard.feeds > .flex-container {
+  flex-direction: column;
+  gap: 40px;
+}
+
+.hastur-shell .dashboard.feeds #dashboard-repo-list {
+  order: -1;
+  width: 100%;
+}
+
+.hastur-shell #dashboard-repo-list .repo-owner-name-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+  gap: 12px;
+  padding: 16px;
+}
+
+.hastur-shell #dashboard-repo-list .repo-owner-name-list > li {
+  min-height: 80px;
+  border: 1px solid var(--color-secondary);
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.hastur-shell #dashboard-repo-list .repo-list-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-primary);
+  margin-inline-end: 10px;
+}
+
+.hastur-shell #dashboard-repo-list .ui.two.item.menu {
+  max-width: 280px;
+  margin-bottom: 18px;
+}
+
+.hastur-shell #dashboard-repo-list .repos-search > .input {
+  margin-bottom: 12px;
+  border-radius: 7px;
+}
+
+.hastur-shell #dashboard-repo-list .repos-search > .input:focus-within {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.hastur-shell #dashboard-repo-list .repos-search > .input > input:focus-visible {
+  outline: none;
+}
+
+.hastur-repo-filter-name {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.hastur-shell .dashboard.issues .filter.menu > .repo.item {
+  display: flex;
+  width: auto;
+  max-width: 100%;
+}
+
+.hastur-shell .dashboard.issues .filter.menu > .repo.item > .label {
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.hastur-settings-navigation > summary {
+  display: none;
+}
+
+.hastur-shell .dashboard.issues > .ui.container > .flex-container {
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hastur-shell .dashboard.issues .flex-container-nav {
+  width: 100%;
+}
+
+.hastur-shell .dashboard.issues .filter.menu {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 8px;
+}
+
+.hastur-shell .dashboard.issues .filter.menu > .item {
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--color-secondary);
+  border-radius: 7px;
+}
+
+.hastur-shell .dashboard.issues .filter.menu > .active.item {
+  border-color: var(--color-primary-light-4);
+  color: var(--color-primary);
+}
+
+.hastur-shell #issue-list,
+.hastur-shell #notification_table {
+  border: 1px solid var(--color-secondary);
+  border-radius: 10px;
+  background: var(--color-box-body);
+  padding-inline: 20px;
+}
+
+.hastur-shell .list-header {
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.hastur-shell .issue-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 32px;
+}
+
+.hastur-shell .issue-content-left,
+.hastur-shell .issue-content-right {
+  width: auto;
+  min-width: 0;
+}
+
+.hastur-shell .issue-content-right {
+  border-inline-start: 1px solid var(--color-secondary);
+  padding-inline-start: 24px;
+}
+
+.hastur-shell .issue-content .comment-body {
+  padding: 24px;
+}
+
+.hastur-shell .issue-content .comment-header {
+  padding: 14px 20px;
+}
+
+.hastur-shell .issue-content .comment-container {
+  border-radius: 10px;
+}
+
+.hastur-shell .issue-title h1 {
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -.025em;
+  line-height: 1.45;
+}
+
+.hastur-shell .issue-title-header {
+  padding-block: 16px 28px;
+}
+
+.hastur-shell .diff-file-box {
+  border-radius: 10px;
+  margin-bottom: 24px;
+}
+
+.hastur-shell .diff-file-box > .header {
+  padding-block: 16px;
+}
+
+.hastur-shell .repository-directory {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr));
+  gap: 16px;
+}
+
+.hastur-shell .repository-directory.items-with-main > .item {
+  border: 1px solid var(--color-secondary);
+  background: var(--color-box-body);
+  border-radius: 10px;
+  padding: 24px;
+  align-content: start;
+  gap: 16px;
+}
+
+.hastur-shell .repository-directory .item-leading > .svg {
+  width: 28px;
+  height: 28px;
+  color: var(--color-primary);
+}
+
+.hastur-shell .repository-directory > .item .item-main {
+  gap: 14px;
+}
+
+.hastur-shell .repository-directory > .item .item-header {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hastur-shell .repository-directory > .item .item-trailing {
+  flex-basis: 100%;
+  margin: 0;
+  justify-content: flex-start;
+  gap: 14px;
+}
+
+.hastur-shell .repository-directory > .item .item-title {
+  font-size: 18px;
+}
+
+.hastur-shell #navbar .navbar-right > .dropdown > .menu {
+  padding: 8px;
+  border: 1px solid var(--color-secondary-dark-2);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px #0004;
+  background: var(--color-box-body);
+}
+
+.hastur-shell #navbar .navbar-right > .dropdown > .menu > .item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.hastur-shell #navbar .navbar-right > .dropdown > .menu > .header {
+  padding: 12px;
+  margin: 0;
+  color: var(--color-text-light-2);
+  font-weight: var(--font-weight-normal);
+}
+
+.hastur-shell #navbar .navbar-right > .dropdown > .menu > .header strong {
+  color: var(--color-text-dark);
+}
+
+.hastur-shell #navbar .navbar-right > .dropdown > .menu > .divider {
+  margin: 6px 12px;
+  width: auto;
+}
+
+.hastur-timeline {
+  padding-bottom: 24px;
+}
+
+.hastur-timeline-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 8px 0 24px;
+  color: var(--color-text-light-2);
+  font-size: 13px;
+}
+
+.hastur-timeline-group > .avatar {
+  width: 24px;
+  height: 24px;
+  margin-inline: 4px;
+}
+
+.hastur-timeline-group a {
+  color: var(--color-text-light);
+  overflow-wrap: anywhere;
+}
+
+.hastur-timeline-event {
+  position: relative;
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  gap: 18px;
+  padding-bottom: 28px;
+}
+
+.hastur-timeline-event::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 15px;
+  top: 32px;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-secondary);
+}
+
+.hastur-timeline-event:has(+ .hastur-timeline-group)::before,
+.hastur-timeline-event:last-of-type::before {
+  display: none;
+}
+
+.hastur-timeline-node {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-secondary);
+  border-radius: 50%;
+  background: var(--color-box-body);
+  color: var(--color-primary);
+}
+
+.hastur-timeline-content {
+  padding-top: 3px;
+  min-width: 0;
+}
+
+.hastur-timeline-title {
+  color: var(--color-text-dark);
+  font-size: 15px;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.hastur-timeline-meta,
+.hastur-timeline-count {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: var(--color-text-light-2);
+  font-size: 12px;
+}
+
+.hastur-timeline-meta {
+  margin-top: 5px;
+}
+
+.hastur-timeline-time {
+  padding-top: 7px;
+  color: var(--color-text-light-2);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.hastur-timeline-details > summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  max-width: 100%;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.hastur-timeline-details > summary::marker {
+  content: "";
+}
+
+.hastur-timeline-details > summary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.hastur-timeline-count,
+.hastur-timeline-chevron {
+  flex-shrink: 0;
+  color: var(--color-text-light-2);
+}
+
+.hastur-timeline-details[open] .hastur-timeline-chevron {
+  transform: rotate(180deg);
+}
+
+.hastur-timeline-commits {
+  display: grid;
+  gap: 12px;
+  margin-block: 14px;
+  padding: 16px;
+  border: 1px solid var(--color-secondary);
+  border-radius: 8px;
+  background: var(--color-box-body);
+}
+
+.hastur-timeline-commit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  overflow-wrap: anywhere;
+}
+
+.hastur-shell .wiki-content-main {
+  padding: 32px;
+  background: var(--color-box-body);
+  border: 1px solid var(--color-secondary);
+  border-radius: 10px;
+}
+
+.hastur-shell .project-column {
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid var(--color-secondary);
+}
+
+.hastur-shell .project-column .issue-card {
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.hastur-shell .project-column-header {
+  padding-block: 8px 20px;
+}
+
+.hastur-shell .user.profile > .ui.container {
+  padding-top: 32px;
+}
+
+.hastur-shell #profile-avatar-card {
+  background: var(--color-box-body);
+  border: 1px solid var(--color-secondary);
+  border-radius: 12px;
+}
+
+.hastur-shell #profile-avatar-card .profile-avatar-image {
+  width: 96px;
+  height: 96px;
+  border-radius: 20px;
+}
+
+.hastur-shell .hastur-org-heading {
+  padding-block: 32px;
+  border-bottom: 1px solid var(--color-secondary);
+  margin-bottom: 24px;
+}
+
+.hastur-shell .hastur-org-heading > div > .avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+}
+
+.hastur-shell .empty-repo-guide > .item {
+  padding: 24px;
+  background: var(--color-body);
+  border-radius: 8px;
+}
+
+.hastur-shell .oauth2-authorize-application-box {
+  max-width: 640px;
+  margin: auto;
+  padding: 32px var(--hastur-space);
+}
+
+.hastur-shell .oauth2-authorize-application-box > .ui.container {
+  padding: 0;
+}
+
+.hastur-shell .oauth2-authorize-application-box .ui.attached.segment {
+  padding: 24px;
+}
+
+.hastur-shell #release-list .release-entry {
+  padding-block: 32px;
+}
+
+.hastur-shell .repository .repo-grid-filelist-sidebar {
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 32px;
+}
+
+.hastur-shell .repository .file-view.markup {
+  padding: clamp(20px, 3vw, 48px);
+}
+
+.hastur-shell .repository .repo-home-sidebar-top {
+  padding: 20px;
+  border: 1px solid var(--color-secondary);
+  border-radius: 10px;
+  background: var(--color-box-body);
+}
+
+.hastur-shell .page-content:is(.user.settings, .repository.settings, .org.settings, .admin) .flex-container-nav {
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.hastur-shell .page-content:is(.user.settings, .repository.settings, .org.settings, .admin) .flex-container-main {
+  max-width: 960px;
+  min-width: 0;
+}
+
+.hastur-shell .page-content:is(.user.settings, .repository.settings, .org.settings, .admin) .ui.attached.segment {
+  padding: 28px;
+  margin-bottom: 28px;
+}
+
+.hastur-shell .page-content:is(.user.settings, .repository.settings, .org.settings, .admin) .ui.top.attached.header {
+  padding: 18px 28px;
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+}
+
+.hastur-shell .page-content:is(.user.settings, .repository.settings, .org.settings, .admin) .flex-container-nav .menu {
+  background: transparent;
+  border: 0;
+}
+
+.hastur-shell .page-content:is(.user.settings, .repository.settings, .org.settings, .admin) .flex-container-nav .item {
+  border-radius: 6px;
+  margin-bottom: 3px;
+  padding-block: 12px;
+}
+
+.hastur-shell .page-content:is(.new-repo, .migrate, .new.org) > .ui.container {
+  max-width: 880px;
+  margin-block: 40px;
+}
+
+.hastur-shell .page-content:is(.new-repo, .migrate, .new.org) .ui.attached.segment {
+  padding: 32px;
+}
+
+.hastur-shell .page-content:is(.new-repo, .migrate, .new.org) .ui.top.attached.header {
+  padding: 24px 32px;
+  font-size: 24px;
+}
+
+.hastur-shell :is(.new-repo, .migrate, .new.org, .hastur-auth) .ui.form.left-right-form .inline.field > label {
+  display: block;
+  text-align: start;
+  width: auto;
+  margin-inline: 0;
+}
+
+.hastur-shell :is(.new-repo, .migrate, .new.org, .hastur-auth) .ui.form.left-right-form .inline.field > .help {
+  margin-inline: 0;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--color-text-light);
+}
+
+.hastur-shell :is(.new-repo, .migrate, .new.org, .hastur-auth) .ui.form.left-right-form .inline.field :is(input:not([type="checkbox"], [type="radio"]), .ui.dropdown, textarea) {
+  width: 100%;
+}
+
+.hastur-shell .status-page-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  max-width: 700px;
+  margin: 12vh auto;
+  padding: 48px 24px;
+  border-block: 1px solid var(--color-secondary);
+}
+
+.hastur-shell .status-page-error-title {
+  font: 500 clamp(26px, 4vw, 52px)/1.2 var(--fonts-monospace);
+  letter-spacing: -.05em;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.hastur-shell .empty-repo-or-org,
+.hastur-shell .empty-placeholder {
+  padding: 64px 24px;
+  color: var(--color-text-light);
+}
+
+.hastur-shell .flex-list > .flex-item {
+  padding-block: 22px;
+}
+
+.hastur-repo-nav .overflow-menu-items {
+  display: grid;
+  gap: 3px;
+}
+
+.hastur-repo-nav .item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 38px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: var(--color-text-light);
+}
+
+.hastur-repo-nav .item .label {
+  margin-inline-start: auto;
+  font: 11px/1.5 var(--fonts-monospace);
+  background: transparent;
+  padding: 0;
+}
+
+.hastur-repo-nav .item.active {
+  color: var(--color-primary);
+  background: var(--color-active);
+}
+
+.hastur-repo-nav .item-flex-space {
+  display: none;
+}
+
+@media (hover: hover) {
+  .hastur-focus-links > a:hover,
+  .hastur-shell #dashboard-repo-list .repo-owner-name-list > li:hover {
+    border-color: var(--color-primary-light-4);
+    background: var(--color-hover);
+  }
+
+  .hastur-repo-nav .item:hover {
+    background: var(--color-nav-hover-bg);
+    color: var(--color-text-dark);
+  }
+}
+
+@media (min-width: 960px) {
+  .hastur-signed .repo-section-nav,
+  .hastur-signed .secondary-nav:has(.repo-section-nav) > .tabs.divider {
+    display: none;
+  }
+
+  .hastur-signed .secondary-nav:has(.repo-section-nav) {
+    border-bottom: 1px solid var(--color-secondary);
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .hastur-shell .repository .repo-grid-filelist-sidebar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hastur-shell .repository .repo-home-filelist {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .hastur-shell .repository .repo-home-sidebar-top {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .hastur-shell .repository .repo-home-sidebar-bottom {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .hastur-shell .issue-content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hastur-shell .issue-content-right {
+    border-inline-start: 0;
+    border-top: 1px solid var(--color-secondary);
+    padding: 24px 0 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hastur-timeline-event {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 4px 12px;
+  }
+
+  .hastur-timeline-time {
+    grid-column: 2;
+    padding: 0;
+  }
+
+  .hastur-settings-navigation > summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border: 1px solid var(--color-secondary);
+    border-radius: 8px;
+    background: var(--color-box-body);
+    cursor: pointer;
+  }
+
+  .hastur-settings-navigation > summary > .svg:last-child {
+    margin-inline-start: auto;
+  }
+
+  .hastur-settings-navigation[open] > summary > .svg:last-child {
+    transform: rotate(180deg);
+  }
+
+  .hastur-shell .hastur-auth {
+    display: block;
+    padding-block: 28px;
+  }
+
+  .hastur-auth-identity {
+    margin-bottom: 32px;
+  }
+
+  .hastur-auth-identity h1 {
+    max-width: none;
+    margin: 10px 0 24px;
+    font-size: 28px;
+  }
+
+  .hastur-auth-identity :is(.hastur-workflow, .hastur-workflow-labels) {
+    display: none;
+  }
+
+  .hastur-shell .hastur-auth > .ui.grid {
+    padding: 24px;
+  }
+
+  .hastur-focus-links {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .hastur-focus-links > a {
+    min-height: 64px;
+    padding: 16px;
+  }
+
+  .hastur-page-heading {
+    gap: 12px;
+    padding-block: 24px;
+  }
+
+  .hastur-shell .page-content:is(.user.settings, .repository.settings, .org.settings, .admin) .flex-container-nav {
+    width: 100%;
+  }
+
+  .hastur-shell .page-content:is(.user.settings, .repository.settings, .org.settings, .admin) .ui.attached.segment {
+    padding: 20px;
+  }
+
+  .hastur-shell .issue-content .comment-body {
+    padding: 16px;
+  }
+}

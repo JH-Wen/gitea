@@ -1,0 +1,10 @@
+@import "./theme-gitea-light.css";
+@import "../hastur/palette-light.css";
+@import "../hastur/workspace.css";
+@import "../hastur/pages.css";
+@import "../hastur/finish.css";
+
+gitea-theme-meta-info {
+  --theme-display-name: "Hastur Light";
+  --theme-color-scheme: "light";
+}

@@ -1,0 +1,10 @@
+@import "./theme-gitea-dark.css";
+@import "../hastur/palette-dark.css";
+@import "../hastur/workspace.css";
+@import "../hastur/pages.css";
+@import "../hastur/finish.css";
+
+gitea-theme-meta-info {
+  --theme-display-name: "Hastur Dark";
+  --theme-color-scheme: "dark";
+}

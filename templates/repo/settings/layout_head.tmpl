@@ -4,6 +4,7 @@
 	<div class="ui container flex-container">
 		{{template "repo/settings/navbar" ctx.RootData}}
 		<div class="flex-container-main">
+			{{template "base/hastur_page_heading" (dict "section" ctx.RootData.Repository.Name "title" ctx.RootData.Title "icon" "octicon-tools")}}
 			{{template "base/alert" ctx.RootData}}
 			{{/* block: repo-setting-content */}}
 

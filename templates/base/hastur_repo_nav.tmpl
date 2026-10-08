@@ -1,0 +1,7 @@
+<div class="hastur-repo-nav">
+	<a class="hastur-repo-identity" href="{{.RepoLink}}">
+		{{template "repo/icon" .Repository}}
+		<span>{{.Repository.Owner.Name}} / {{.Repository.Name}}</span>
+	</a>
+	{{template "repo/navigation" .}}
+</div>

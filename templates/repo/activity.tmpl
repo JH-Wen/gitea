@@ -6,6 +6,7 @@
 			{{template "repo/navbar" .}}
 		</div>
 		<div class="flex-container-main" data-ref-issue-container>
+			{{template "base/hastur_page_heading" (dict "section" .Repository.Name "title" (ctx.Locale.Tr "repo.activity") "icon" "octicon-pulse")}}
 			{{if .PageIsPulse}}{{template "repo/pulse" .}}{{end}}
 			{{if .PageIsContributors}}{{template "repo/contributors" .}}{{end}}
 			{{if .PageIsCodeFrequency}}{{template "repo/code_frequency" .}}{{end}}
@@ -14,4 +15,3 @@
 	</div>
 </div>
 {{template "base/footer" .}}
-

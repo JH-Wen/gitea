@@ -1,0 +1,13 @@
+<header class="hastur-page-heading">
+	<div><span class="hastur-eyebrow">WORKSPACE</span><h1>{{ctx.Locale.Tr "dashboard"}}</h1></div>
+	<a class="ui primary button" href="{{AppSubUrl}}/repo/create{{if .ContextUser.IsOrganization}}?org={{.ContextUser.ID}}{{end}}">{{svg "octicon-plus"}} {{ctx.Locale.Tr "new_repo"}}</a>
+</header>
+<nav class="hastur-focus-links" aria-label="{{ctx.Locale.Tr "dashboard"}}">
+	{{if not ctx.Consts.RepoUnitTypeIssues.UnitGlobalDisabled}}
+	<a href="{{AppSubUrl}}/issues?type=assigned"><span class="hastur-focus-icon">{{svg "octicon-issue-opened" 24}}</span><span>{{ctx.Locale.Tr "repo.issues.filter_type.assigned_to_you"}}</span>{{svg "octicon-arrow-up-right"}}</a>
+	{{end}}
+	{{if not ctx.Consts.RepoUnitTypePullRequests.UnitGlobalDisabled}}
+	<a href="{{AppSubUrl}}/pulls?type=review_requested"><span class="hastur-focus-icon">{{svg "octicon-git-pull-request" 24}}</span><span>{{ctx.Locale.Tr "repo.issues.filter_type.review_requested"}}</span>{{svg "octicon-arrow-up-right"}}</a>
+	{{end}}
+	<a href="{{AppSubUrl}}/notifications"><span class="hastur-focus-icon">{{svg "octicon-inbox" 24}}</span><span>{{ctx.Locale.Tr "notifications"}}</span>{{svg "octicon-arrow-up-right"}}</a>
+</nav>

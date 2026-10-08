@@ -2,6 +2,7 @@
 <div role="main" aria-label="{{.Title}}" class="page-content repository quickstart">
 	{{template "repo/header" .}}
 	<div class="ui container">
+		{{template "base/hastur_page_heading" (dict "section" "WORKSPACE" "title" (ctx.Locale.Tr "repo.quick_guide") "icon" "octicon-repo")}}
 		<div class="ui grid">
 			<div class="sixteen wide column content">
 				{{template "base/alert" .}}

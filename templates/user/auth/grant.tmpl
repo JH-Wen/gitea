@@ -1,5 +1,6 @@
 {{template "base/head" .}}
 <div role="main" aria-label="{{.Title}}" class="page-content oauth2-authorize-application-box">
+	{{template "base/hastur_page_heading" (dict "section" "ACCESS" "title" .Application.Name "icon" "octicon-shield-check")}}
 	<div class="ui container tw-max-w-[500px]">
 		<h3 class="ui top attached header">
 			{{ctx.Locale.Tr "auth.authorize_title" .Application.Name}}
