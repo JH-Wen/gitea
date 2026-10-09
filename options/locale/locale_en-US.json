@@ -1,5 +1,8 @@
 {
   "home_title": "Home",
+  "aria.sidebar_collapse": "Collapse sidebar",
+  "aria.sidebar_expand": "Expand sidebar",
+  "aria.sidebar_resize": "Resize sidebar. Use arrow keys to adjust; double-click to reset.",
   "dashboard": "Dashboard",
   "explore_title": "Explore",
   "help": "Help",

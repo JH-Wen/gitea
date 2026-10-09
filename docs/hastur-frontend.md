@@ -83,6 +83,13 @@ unsupported browsers retain normal navigation. All added motion is conditional o
 `prefers-reduced-motion: no-preference`. Do not add continuous decorative motion,
 pointer tracking, or scroll interception to everyday development pages.
 
+On desktop, drag the sidebar's outer edge to resize it between 200 and 400 px.
+The edge also accepts arrow keys; Home/End select the limits, and double-click
+restores 224 px. The chevron collapses it to a 72 px icon rail. Width and collapsed
+state are stored in the browser, scoped to the instance subpath, and restored before
+the first paint. Collapse/expand takes 200 ms and respects reduced-motion settings;
+dragging follows the pointer directly. Mobile navigation keeps its existing layout.
+
 ## Verification
 
 Inside the development container:
