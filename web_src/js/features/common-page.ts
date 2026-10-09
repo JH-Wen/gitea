@@ -8,6 +8,7 @@ import {initAvatarUploaderWithCropper} from './comp/Cropper.ts';
 import {initCompSearchRepoBox} from './comp/SearchRepoBox.ts';
 import {initRepoSwitcher} from './repo-switcher.ts';
 import {initScopedWorkflowRequired} from './comp/ScopedWorkflows.ts';
+import {initHasturSidebar} from './hastur-sidebar.ts';
 
 const {appUrl, appSubUrl} = window.config;
 
@@ -49,6 +50,7 @@ function initFooterThemeSelector() {
 }
 
 export function initCommmPageComponents() {
+  initHasturSidebar();
   initHeadNavbarContentToggle();
   initFooterLanguageMenu();
   initFooterThemeSelector();

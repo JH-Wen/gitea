@@ -2,7 +2,7 @@
 <nav id="navbar" aria-label="{{ctx.Locale.Tr "aria.navbar"}}">
 	<a class="item" id="navbar-logo" href="{{AppSubUrl}}/" aria-label="{{if .IsSigned}}{{ctx.Locale.Tr "dashboard"}}{{else}}{{ctx.Locale.Tr "home_title"}}{{end}}">
 		{{if $hasturTheme}}
-			<span class="hastur-brand" aria-hidden="true"><span class="hastur-brand-mark"><span>g</span></span>gitea</span>
+			<span class="hastur-brand" aria-hidden="true"><span class="hastur-brand-mark"><span>g</span></span><span class="hastur-brand-name">gitea</span></span>
 		{{else}}
 			<img width="30" height="30" src="{{AssetUrlPrefix}}/img/logo.svg" alt="{{ctx.Locale.Tr "logo"}}" aria-hidden="true">
 		{{end}}
@@ -157,6 +157,10 @@
 			</a>
 		{{end}}
 	</div>
+	{{if and $hasturTheme .IsSigned}}
+		<button type="button" class="hastur-sidebar-toggle btn" aria-controls="navbar" aria-expanded="true" aria-label="{{ctx.Locale.Tr "aria.sidebar_collapse"}}" data-collapse-label="{{ctx.Locale.Tr "aria.sidebar_collapse"}}" data-expand-label="{{ctx.Locale.Tr "aria.sidebar_expand"}}">{{svg "octicon-chevron-left" 16}}</button>
+		<div class="hastur-sidebar-resize" role="separator" tabindex="0" aria-orientation="vertical" aria-controls="navbar" aria-label="{{ctx.Locale.Tr "aria.sidebar_resize"}}" aria-valuemin="200" aria-valuemax="400" aria-valuenow="224"></div>
+	{{end}}
 </nav>
 {{template "base/head_impersonate_banner"}}
 {{template "base/head_banner"}}

@@ -3,7 +3,8 @@
   --fonts-monospace: "Cascadia Code", "SFMono-Regular", Consolas, monospace, var(--fonts-emoji);
   --border-radius: 6px;
   --border-radius-medium: 10px;
-  --hastur-sidebar-width: 224px;
+  --hastur-sidebar-expanded-width: 224px;
+  --hastur-sidebar-width: var(--hastur-sidebar-expanded-width);
   --color-primary-dark-1: color-mix(in srgb, var(--color-primary), var(--color-text-dark) 12%);
   --color-primary-dark-2: color-mix(in srgb, var(--color-primary), var(--color-text-dark) 24%);
   --color-primary-dark-3: color-mix(in srgb, var(--color-primary), var(--color-text-dark) 36%);
@@ -215,7 +216,125 @@ html:has(> .hastur-shell) {
   outline-offset: 3px;
 }
 
+.hastur-sidebar-toggle,
+.hastur-sidebar-resize {
+  display: none;
+}
+
 @media (min-width: 960px) {
+  html[data-hastur-sidebar-collapsed] {
+    --hastur-sidebar-width: 72px;
+  }
+
+  .hastur-signed #navbar > .hastur-sidebar-toggle {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    inset-block-start: 32px;
+    inset-inline-end: -14px;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--color-secondary);
+    border-radius: 8px;
+    background: var(--color-nav-bg);
+    color: var(--color-text-light);
+    z-index: 2;
+  }
+
+  .hastur-sidebar-toggle::before {
+    content: "";
+    position: absolute;
+    inset: -6px;
+  }
+
+  .hastur-signed #navbar > .hastur-sidebar-toggle:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .hastur-signed #navbar > .hastur-sidebar-resize {
+    display: block;
+    position: absolute;
+    inset-block: 80px 0;
+    inset-inline-end: -4px;
+    width: 8px;
+    cursor: col-resize;
+    touch-action: none;
+  }
+
+  .hastur-sidebar-resize::after {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 3px;
+    width: 2px;
+    background: transparent;
+  }
+
+  .hastur-sidebar-resize:is(:hover, :focus-visible)::after,
+  [data-hastur-sidebar-resizing] .hastur-sidebar-resize::after {
+    background: var(--color-primary);
+  }
+
+  [data-hastur-sidebar-resizing] .hastur-signed {
+    cursor: col-resize;
+    user-select: none;
+  }
+
+  [data-hastur-sidebar-collapsed] .hastur-signed #navbar > .hastur-sidebar-resize,
+  [data-hastur-sidebar-collapsed] .hastur-brand-name,
+  [data-hastur-sidebar-collapsed] .hastur-repo-identity > span,
+  [data-hastur-sidebar-collapsed] .hastur-repo-nav .item > .label,
+  [data-hastur-sidebar-collapsed] .hastur-signed #navbar > .navbar-right .not-mobile {
+    display: none;
+  }
+
+  [data-hastur-sidebar-collapsed] .hastur-sidebar-toggle > .svg {
+    transform: rotate(180deg);
+  }
+
+  [data-hastur-sidebar-collapsed] .hastur-signed #navbar-logo {
+    padding-inline: 0;
+    justify-content: center;
+  }
+
+  [data-hastur-sidebar-collapsed] .hastur-signed #navbar .navbar-left > .item,
+  [data-hastur-sidebar-collapsed] .hastur-repo-nav .item,
+  [data-hastur-sidebar-collapsed] .hastur-repo-identity {
+    font-size: 0;
+    gap: 0;
+    justify-content: center;
+    padding-inline: 0;
+  }
+
+  [data-hastur-sidebar-collapsed] .hastur-signed #navbar > .navbar-right {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  [data-hastur-sidebar-collapsed] .hastur-signed #navbar > .navbar-right > .item {
+    padding-inline: 0;
+    justify-content: center;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    [data-hastur-sidebar-ready]:not([data-hastur-sidebar-resizing]) .hastur-signed #navbar {
+      transition: width 200ms cubic-bezier(.2, .8, .2, 1);
+    }
+
+    [data-hastur-sidebar-ready]:not([data-hastur-sidebar-resizing]) .hastur-signed > .full.height {
+      transition: padding-inline-start 200ms cubic-bezier(.2, .8, .2, 1);
+    }
+
+    [data-hastur-sidebar-ready]:not([data-hastur-sidebar-resizing]) .hastur-signed > footer {
+      transition: margin-inline-start 200ms cubic-bezier(.2, .8, .2, 1);
+    }
+
+    .hastur-sidebar-toggle > .svg {
+      transition: transform 200ms cubic-bezier(.2, .8, .2, 1);
+    }
+  }
+
   .hastur-signed > .full.height {
     padding-inline-start: var(--hastur-sidebar-width);
   }

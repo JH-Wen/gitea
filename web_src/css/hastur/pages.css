@@ -368,6 +368,44 @@
   margin-bottom: 20px;
 }
 
+.hastur-shell .issue-list-toolbar {
+  margin-bottom: 16px;
+}
+
+.hastur-shell #issue-list {
+  padding-inline: 0;
+}
+
+.hastur-shell #issue-list > .item {
+  padding-inline: 20px;
+}
+
+.hastur-shell #issue-list > .item:first-child {
+  border-start-start-radius: inherit;
+  border-start-end-radius: inherit;
+}
+
+.hastur-shell #issue-list > .item:last-child {
+  border-end-start-radius: inherit;
+  border-end-end-radius: inherit;
+}
+
+.hastur-shell .ui.form .ui.action.input > input:not([type="hidden"]),
+.hastur-shell .ui.action.input > input:not([type="hidden"]) {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+
+.hastur-shell .ui.action.input:has(> input:not([type="hidden"]):focus-visible) {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 7px;
+}
+
+.hastur-shell .ui.action.input > input:not([type="hidden"]):focus-visible {
+  outline: none;
+}
+
 .hastur-shell .issue-content {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 240px;

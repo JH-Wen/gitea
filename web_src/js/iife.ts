@@ -9,3 +9,6 @@ import './globals.ts';
 
 import './webcomponents/index.ts';
 import './modules/user-settings.ts'; // templates also need to use localUserSettings in inline scripts
+import {restoreHasturSidebar} from './modules/hastur-sidebar-state.ts';
+
+restoreHasturSidebar();
